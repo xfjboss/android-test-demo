@@ -1,4 +1,4 @@
-package com.example.virtuesaccumulator.views;
+package com.example.virtuesaccumulator.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,18 +15,21 @@ import com.example.virtuesaccumulator.constant.VAConstDb;
 import com.example.virtuesaccumulator.controller.VAController;
 import com.example.virtuesaccumulator.model.VAModel;
 import com.example.virtuesaccumulator.model.VAModelEvent;
+import com.example.virtuesaccumulator.views.VAPopButton;
+import com.example.virtuesaccumulator.views.VAShakeView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class MainActivity extends AppCompatActivity implements VAController.VAControllerCallback {
+public class MainActivity extends AppCompatActivity
+        implements VAController.VAControllerCallback, VAShakeView.ShakeViewCallback {
 
     public static int CLICK_TIME_LIMIT = 10;//10ms for one click
     TextView pointCounter;
     TextView coinCounter;
     Button settingButton;
-    View woodenFish;
+    VAPopButton woodenFish;
     long currentPoint = 0L;
     int coin = 0;
     VAController controller;
@@ -45,26 +48,14 @@ public class MainActivity extends AppCompatActivity implements VAController.VACo
 
         pointCounter.setText(String.valueOf(currentPoint));
         coinCounter.setText(String.valueOf(coin));
+        woodenFish.setClickCallback(this);
+        woodenFish.setImage(R.drawable.example);
         EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        woodenFish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                woodenFish.setEnabled(false);
-                new Handler().postDelayed(new Runnable(){
-                    @Override
-                    public void run() {
-                        woodenFish.setEnabled(true);
-                    }
-                }, CLICK_TIME_LIMIT);
-                dealWithCount();
-            }
-        });
     }
 
     @Override
@@ -134,6 +125,18 @@ public class MainActivity extends AppCompatActivity implements VAController.VACo
             pointCounter.setText(String.valueOf(currentPoint));
             coinCounter.setText(String.valueOf(coin));
         }
+    }
+
+    @Override
+    public void onViewClicked() {
+        woodenFish.setEnabled(false);
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                woodenFish.setEnabled(true);
+            }
+        }, CLICK_TIME_LIMIT);
+        dealWithCount();
     }
 }
 

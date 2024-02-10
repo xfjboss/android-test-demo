@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?attr/fullscreenBackgroundColor"
     android:theme="@style/ThemeOverlay.VirtuesAccumulator.FullscreenContainer"
-    tools:context=".views.MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <RelativeLayout
@@ -46,15 +46,15 @@
             android:layout_alignParentEnd="true"
             android:text="@string/dummy_button"/>
 
+
     </RelativeLayout>
 
-    <View
+    <com.example.virtuesaccumulator.views.VAPopButton
         android:id="@+id/wooden_fish"
         android:layout_height="250dp"
         android:layout_width="250dp"
         android:layout_gravity="center"
-        android:background="#B1F365"
-        tools:ignore="UselessParent">
-    </View>
+        android:clickable="true"
+        android:focusable="true" />
 
 </FrameLayout>
