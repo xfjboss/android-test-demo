@@ -68,8 +68,13 @@ public class MainActivity extends AppCompatActivity implements VAController.VACo
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onStop() {
+        super.onStop();
         saveData();
+    }
+
+    @Override
+    protected void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
