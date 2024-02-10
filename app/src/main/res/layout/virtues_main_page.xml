@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fullscreenBackgroundColor"
+    android:theme="@style/ThemeOverlay.VirtuesAccumulator.FullscreenContainer"
+    tools:context=".views.MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/main_page_title"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/total_coin"
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:textColor="#CD639D"
+            android:textSize="30sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:text=""
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/total_point"
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:textColor="#CDAA63"
+            android:textSize="30sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/setting_button"
+            style="?android:attr/textSelectHandleRight"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/dummy_button"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/wooden_fish"
+        android:layout_height="250dp"
+        android:layout_width="250dp"
+        android:layout_gravity="center"
+        android:background="#B1F365"
+        tools:ignore="UselessParent">
+    </View>
+
+</FrameLayout>
