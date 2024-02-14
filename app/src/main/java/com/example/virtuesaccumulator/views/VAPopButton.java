@@ -1,10 +1,15 @@
 package com.example.virtuesaccumulator.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.ScaleAnimation;
 
-public class VAPopButton extends VAShakeView implements View.OnClickListener {
+public class VAPopButton extends VAShakeView {
     public VAPopButton(Context context) {
         super(context);
     }
@@ -18,8 +23,23 @@ public class VAPopButton extends VAShakeView implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        callback.onViewClicked();
+    public boolean onTouch(View v, MotionEvent event) {
+        float x = event.getRawX();
+        float y = event.getRawY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                callback.adjustAccumulatorPosition(x, y);
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+
+                break;
+
+            case MotionEvent.ACTION_UP:
+                callback.adjustAccumulatorStatus(true, x, y);
+                callback.onViewClicked();
+                break;
+        }
+        return super.onTouch(v, event);
     }
 }

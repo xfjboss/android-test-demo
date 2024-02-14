@@ -1,15 +1,20 @@
 package com.example.virtuesaccumulator.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.Animation;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-public class VAShakeView extends FrameLayout implements View.OnClickListener {
+public class VAShakeView extends FrameLayout implements View.OnTouchListener{
     public int imageResId;
     public int animationPeriod = 300;
     public ImageView imageView;
@@ -36,7 +41,7 @@ public class VAShakeView extends FrameLayout implements View.OnClickListener {
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setImageResource(imageResId);
         addView(imageView);
-        setOnClickListener(this);
+        setOnTouchListener(this);
     }
 
     private int getAnimationDuration() {
@@ -57,19 +62,34 @@ public class VAShakeView extends FrameLayout implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        ScaleAnimation bounceAnimation = new ScaleAnimation(1f, 1.2f, 1f, 1.2f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f
-        );
+    public boolean onTouch(View v, MotionEvent event) {
+        Log.d("xffffffffffff----------pop", event.toString());
+        float x = event.getRawX();
+        float y = event.getRawY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_UP:
+                ScaleAnimation bounceAnimation = new ScaleAnimation(1f, 1.2f, 1f, 1.2f,
+                        Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF, 0.5f
+                );
 
-        bounceAnimation.setDuration(getAnimationDuration());
-        bounceAnimation.setInterpolator(new BounceInterpolator());
+                bounceAnimation.setDuration(getAnimationDuration());
+                bounceAnimation.setInterpolator(new BounceInterpolator());
 
-        startAnimation(bounceAnimation);
+                startAnimation(bounceAnimation);
+                break;
+        }
+        return false;
     }
 
     public interface ShakeViewCallback {
         void onViewClicked();
+
+        void adjustAccumulatorPosition(float x, float y);
+
+        void adjustAccumulatorStatus(boolean addOneShow, float x, float y);
     }
 }

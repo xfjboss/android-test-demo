@@ -57,4 +57,18 @@
         android:clickable="true"
         android:focusable="true" />
 
+    <com.example.virtuesaccumulator.views.VAHammer
+        android:id="@+id/va_hammer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/va_plus_one"
+        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:src="@drawable/va_plus_one"
+        android:visibility="gone"
+        android:contentDescription="@string/plus_one" />
+
 </FrameLayout>
