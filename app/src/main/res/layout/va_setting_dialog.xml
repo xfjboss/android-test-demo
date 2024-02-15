@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/va_shape_dialog"
+    tools:ignore="MissingDefaultResource">
+
+    <com.example.virtuesaccumulator.views.VASettingButton
+        android:id="@+id/va_shop_button"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="80dp"/>
+    <com.example.virtuesaccumulator.views.VASettingButton
+        android:id="@+id/va_setting_button1"
+        android:layout_width="250dp"
+        android:layout_height="80dp"/>
+    <com.example.virtuesaccumulator.views.VASettingButton
+        android:id="@+id/va_other_button"
+        android:layout_width="250dp"
+        android:layout_height="80dp"/>
+    <FrameLayout
+        android:id="@+id/va_dialog_cancel"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/va_shape_dialog_quit"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_marginTop="3dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/va_dialog_quit_text"
+            android:contentDescription="@string/va_dialog_quit_text" />
+
+    </FrameLayout>
+
+</LinearLayout>

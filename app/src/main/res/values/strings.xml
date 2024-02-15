@@ -4,4 +4,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="plus_one">plus_one</string>
+    <string name="setting_button">setting_button</string>
+    <string name="va_setting_button1">va_setting_button1</string>
+    <string name="va_setting_button2">va_setting_button2</string>
+    <string name="va_dialog_quit_text">va_dialog_quit_text</string>
 </resources>

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         tools:ignore="UselessParent">
 
         <TextView
@@ -37,14 +38,16 @@
             android:layout_centerVertical="true"
             tools:ignore="RelativeOverlap" />
 
-        <Button
+        <ImageView
             android:id="@+id/setting_button"
-            style="?android:attr/textSelectHandleRight"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/va_settings"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:text="@string/dummy_button"/>
+            android:contentDescription="@string/setting_button" />
 
 
     </RelativeLayout>
@@ -62,13 +65,5 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/va_plus_one"
-        android:layout_height="60dp"
-        android:layout_width="80dp"
-        android:src="@drawable/va_plus_one"
-        android:visibility="gone"
-        android:contentDescription="@string/plus_one" />
 
 </FrameLayout>

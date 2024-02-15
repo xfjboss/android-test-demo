@@ -1,10 +1,5 @@
 package com.example.virtuesaccumulator.activity;
 
-import static androidx.core.view.ViewCompat.getTranslationX;
-import static androidx.core.view.ViewCompat.getTranslationY;
-import static androidx.core.view.ViewCompat.setTranslationX;
-import static androidx.core.view.ViewCompat.setTranslationY;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -13,15 +8,11 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +26,7 @@ import com.example.virtuesaccumulator.model.VAModelEvent;
 import com.example.virtuesaccumulator.util.VaUtils;
 import com.example.virtuesaccumulator.views.VAHammer;
 import com.example.virtuesaccumulator.views.VAPopButton;
+import com.example.virtuesaccumulator.views.VASettingDialog;
 import com.example.virtuesaccumulator.views.VAShakeView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     public static int CLICK_TIME_LIMIT = 10;//10ms for one click
     private TextView pointCounter;
     private TextView coinCounter;
-    private Button settingButton;
+    private ImageView settingButton;
     private VAPopButton woodenFish;
     private VAHammer hammer;
     long currentPoint = 0L;
@@ -73,6 +65,19 @@ public class MainActivity extends AppCompatActivity
         woodenFish.setClickCallback(this);
         woodenFish.setImage(R.drawable.example);
         hammer.setImage(R.drawable.va_hammer);
+
+        settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VASettingDialog dialog = new VASettingDialog(MainActivity.this);
+                Window window = dialog.getWindow();
+
+                if (window != null) {
+                    window.setBackgroundDrawableResource(R.drawable.va_shape_dialog);
+                }
+                dialog.show();
+            }
+        });
         EventBus.getDefault().register(this);
     }
 
