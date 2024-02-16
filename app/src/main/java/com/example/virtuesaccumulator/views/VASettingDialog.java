@@ -3,11 +3,13 @@ package com.example.virtuesaccumulator.views;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.virtuesaccumulator.R;
+import com.example.virtuesaccumulator.activity.VAStoreActivity;
 
 
 public class VASettingDialog extends Dialog {
@@ -46,7 +48,9 @@ public class VASettingDialog extends Dialog {
         shopButton.setCallback(new VASettingButton.SettingButtonCallback() {
             @Override
             public void onButtonClicked() {
-
+                Intent intent = new Intent(getContext(), VAStoreActivity.class);
+                getContext().startActivity(intent);
+                dismiss();
             }
         });
         settingButton.setCallback(new VASettingButton.SettingButtonCallback() {

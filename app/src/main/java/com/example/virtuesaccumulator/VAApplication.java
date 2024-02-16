@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.virtuesaccumulator.controller.VAController;
 import com.example.virtuesaccumulator.helper.DBHelper;
+import com.example.virtuesaccumulator.util.VaUtils;
 
 public class VAApplication extends Application {
 
@@ -13,10 +14,11 @@ public class VAApplication extends Application {
         //init database
         DBHelper.initializeInstance(this);
         prepareInitData();
+        VaUtils.setGlobalContext(this);
     }
 
     public void prepareInitData() {
-        VAController controller = new VAController(this);
-        controller.getAllData();
+        VAController controller = VAController.getInstance();
+        controller.getVAModelData();
     }
 }

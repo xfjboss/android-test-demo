@@ -28,7 +28,9 @@ public class VAPopButton extends VAShakeView {
         float y = event.getRawY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                callback.adjustAccumulatorPosition(x, y);
+                if (callback != null) {
+                    callback.adjustAccumulatorPosition(x, y);
+                }
                 break;
 
             case MotionEvent.ACTION_MOVE:
@@ -36,8 +38,10 @@ public class VAPopButton extends VAShakeView {
                 break;
 
             case MotionEvent.ACTION_UP:
-                callback.adjustAccumulatorStatus(true, x, y);
-                callback.onViewClicked();
+                if (callback != null) {
+                    callback.adjustAccumulatorStatus(true, x, y);
+                    callback.onViewClicked();
+                }
                 break;
         }
         return super.onTouch(v, event);

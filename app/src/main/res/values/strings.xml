@@ -8,4 +8,5 @@
     <string name="va_setting_button1">va_setting_button1</string>
     <string name="va_setting_button2">va_setting_button2</string>
     <string name="va_dialog_quit_text">va_dialog_quit_text</string>
+    <string name="coins_icon">coins_icon</string>
 </resources>

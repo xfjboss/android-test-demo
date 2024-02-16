@@ -61,7 +61,9 @@ public class VASettingButton extends FrameLayout {
                     case MotionEvent.ACTION_UP:
                         inner.setScaleX(1.0f);
                         inner.setScaleY(1.0f);
-                        callback.onButtonClicked();
+                        if (callback != null) {
+                            callback.onButtonClicked();
+                        }
                         break;
                 }
                 return true;

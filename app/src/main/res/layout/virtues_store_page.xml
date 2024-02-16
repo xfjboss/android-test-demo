@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/va_shape_store"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/store_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/va_store_back"
+            android:contentDescription="@string/coins_icon" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            tools:ignore="RelativeOverlap,UselessParent">
+
+            <ImageView
+                android:id="@+id/store_coins"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/va_coins"
+                android:contentDescription="@string/coins_icon" />
+
+            <TextView
+                android:id="@+id/total_coin"
+                android:layout_height="45dp"
+                android:layout_width="wrap_content"
+                android:textColor="#FFC800"
+                android:textSize="30sp"
+                android:layout_toEndOf="@+id/store_coins"
+                android:layout_marginStart="5dp"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/store_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

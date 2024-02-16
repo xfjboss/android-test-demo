@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         settingButton = findViewById(R.id.setting_button);
         woodenFish = findViewById(R.id.wooden_fish);
         hammer = findViewById(R.id.va_hammer);
-        controller = new VAController(this);// better use eventbus and do this on application init.
+        controller = VAController.getInstance();// better use eventbus and do this on application init.
         currentPoint = controller.getPointData();
         coin = controller.getCoinData();
 

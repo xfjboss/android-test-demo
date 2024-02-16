@@ -8,6 +8,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.virtuesaccumulator.model.VABackgroundItem;
+import com.example.virtuesaccumulator.model.VAModel;
+import com.example.virtuesaccumulator.model.VAStickerItem;
+import com.example.virtuesaccumulator.model.VAWoodenFishItem;
+
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper instance;
 
@@ -30,11 +35,25 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE);
+        db.execSQL(VAModel.CREATE_TABLE);
+        db.execSQL(VAWoodenFishItem.CREATE_TABLE);
+        db.execSQL(VAStickerItem.CREATE_TABLE);
+        db.execSQL(VABackgroundItem.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // update app update db
+        for (int version = oldVersion + 1; version <= newVersion; version++) {
+            switch (version) {
+                case 2:
+                    db.execSQL(VAWoodenFishItem.CREATE_TABLE);
+                    db.execSQL(VAStickerItem.CREATE_TABLE);
+                    db.execSQL(VABackgroundItem.CREATE_TABLE);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
